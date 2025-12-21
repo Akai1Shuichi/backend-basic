@@ -73,6 +73,7 @@ npx prisma generate
 ```
 
 👉 Kết quả:
+
 - Database tạo bảng Todo
 - Prisma Client sẵn sàng dùng trong code
 
@@ -96,7 +97,5 @@ Server mặc định: `http://localhost:3000`
 
 Giờ bạn có thể:
 
-- ✅ Viết API CRUD Todo
-- 🔗 Kết nối Flutter / React frontend
+- ✅ Viết API CRUD
 - 🔐 Mở rộng User + JWT Auth
-- 📦 Docker hoá luôn backend

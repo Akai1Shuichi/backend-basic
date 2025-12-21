@@ -1,53 +1,93 @@
-🚀 Setup Backend TodoList (Node.js + Prisma)
+🚀 Setup Backend TodoList (Node.js + Prisma + PostgreSQL + Docker)
+0️⃣ Yêu cầu
 
-1️⃣ Cài dependency
+Node.js >= 18
+
+Docker & Docker Compose
+
+npm
+
+1️⃣ Khởi động Database bằng Docker
+
+Chạy database
+
+docker compose up -d
+
+Kiểm tra container:
+
+docker ps
+
+2️⃣ Cài dependency
 npm install
 
-2️⃣ Cài & khởi tạo Prisma
+3️⃣ Cài & khởi tạo Prisma
 npx prisma init
+
 
 👉 Lệnh này sẽ tạo:
 
 prisma/
 └─ schema.prisma
 
-👉 Đồng thời sinh file .env với nội dung dạng:
 
-DATABASE_URL="mysql://user:pass@localhost:3306/todolist"
+👉 Đồng thời sinh file .env
 
-⚠️ Nhớ sửa user, pass, todolist cho đúng DB của bạn
+Sửa .env cho đúng PostgreSQL (QUAN TRỌNG)
+DATABASE_URL="postgresql://todolist_user:todolist_pass@localhost:5432/todolist_db"
 
-3️⃣ Tạo schema Todo (QUAN TRỌNG)
+
+⚠️ KHÔNG dùng mysql URL vì project đang chạy Postgres bằng Docker.
+
+4️⃣ Tạo schema Todo (QUAN TRỌNG)
 
 Mở file:
 
 prisma/schema.prisma
 
+
 Ví dụ:
 
 model Todo {
-id Int @id @default(autoincrement())
-title String
-completed Boolean @default(false)
-createdAt DateTime @default(now())
+  id        Int      @id @default(autoincrement())
+  title     String
+  completed Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-4️⃣ Migrate database & generate Prisma Client
+5️⃣ Migrate database & generate Prisma Client
 npx prisma migrate dev --name init
 npx prisma generate
 
+
 👉 Kết quả:
 
-Database được tạo bảng Todo
+Database tạo bảng Todo
 
 Prisma Client sẵn sàng dùng trong code
 
-✅ Kiểm tra database (tuỳ chọn)
+6️⃣ Kiểm tra database (tuỳ chọn)
 npx prisma studio
 
-Mở browser để xem & sửa dữ liệu trực tiếp.
+
+👉 Mở browser để xem & chỉnh sửa dữ liệu trực tiếp.
+
+7️⃣ Chạy backend
+npm run dev
+
+
+Server mặc định:
+
+http://localhost:3000
 
 📌 Done!
+
 Giờ bạn có thể:
 
-Viết API CRUD Todo
+✅ Viết API CRUD Todo
+
+🔗 Kết nối Flutter / React frontend
+
+🔐 Mở rộng User + JWT Auth
+
+📦 Docker hoá luôn backend

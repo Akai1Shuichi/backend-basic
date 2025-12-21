@@ -1,4 +1,4 @@
-# 🚀 Setup Backend TodoList (Node.js + Prisma + PostgreSQL + Docker)
+# 🚀 Setup Backend Basic (Node.js + Prisma + PostgreSQL + Docker)
 
 ## 0️⃣ Yêu cầu
 
